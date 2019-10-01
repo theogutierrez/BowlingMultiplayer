@@ -7,9 +7,16 @@ package bowlingmulti;
 
 /**
  *
- * @author Théo Gutierrez
+ * @author pedago
  */
-public interface MultiPlayerGame {
+public class MultiPlayer implements MultiPlayerGame {
+    
+    private String[] playerName;
+    
+
+    public MultiPlayer() {
+        
+    }
    
     /**
      * Démarre une nouvelle partie pour un groupe de joueurs
@@ -18,8 +25,14 @@ public interface MultiPlayerGame {
      * de la forme "Prochain tir : joueur Bastide, tour n° 1, boule n° 1"
      * @throws java.lang.Exception si le tableau est vide ou null
      */
-    public String startNewGame(String[] playerName) throws Exception ;
-   
+    public String startNewGame(String[] playerName) throws Exception {
+        if (playerName.length == 0) {
+            throw new java.lang.Exception("Tableau est vide ou null");
+        }
+        this.playerName = playerName;
+        return "Prochain tir: joueur " + playerName[0] + "tour n°1, boule n°1";
+    }
+       
     /**
      * Enregistre le nombre de quilles abattues pour le joueur courant, dans le frame courant, pour la boule courante
      * @param nombreDeQuillesAbattues : nombre de quilles abattue à ce lancer
@@ -28,14 +41,13 @@ public interface MultiPlayerGame {
      * ou bien "Partie terminée" si la partie est terminée.
      * @throws java.lang.Exception si la partie n'est pas démarrée, ou si elle est terminée.
      */
-    public String lancer(int nombreDeQuillesAbattues) throws Exception ;
-   
-    /**
-     * Donne le score pour le joueur playerName
-     * @param playerName le nom du joueur recherché
-     * @return le score pour ce joueur
-     * @throws Exception si le playerName ne joue pas dans cette partie
-     */
-    public int scoreFor(String playerName) throws Exception;
-   
+    public String lancer(int nombreDeQuillesAbattues) throws Exception {
+        
+        return "bouchon";
+    }    
+    
+    public int scoreFor(String playerName) throws Exception {
+        return 0;
+    }
+    
 }
